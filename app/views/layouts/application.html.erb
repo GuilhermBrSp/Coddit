@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Rails Treinamento</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,17 +11,23 @@
 
   <body>
     <header class="navbar navbar-default" role="navigation">
-      <div class="navbar-inner">
-        <div class="container">
+
+        <div class="container-fluid">
           <nav class="navbar navbar-expand-md navbar-light bg-light">
             <a class="navbar-brand" id="logo" href="#">Coddit</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-colpse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExample04">
+            <div class="collapse navbar-collapse" id="navbar-colpse">
               <% if true-%>
                 <ul class="nav navbar-nav ">
+                  <li>
+                      <%= link_to "Home", root_path %>
+                  </li>
                   <li>
                     <%= link_to "Submit Post", new_post_path %>
                   </li>
@@ -43,14 +49,28 @@
                 </ul>
               <% end -%>
 
-              <form class="form-inline navbar-right">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+
+              <ul class="nav navbar-nav pull-right">
+                <li>
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, Anonymous <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href=""><i class="glyphicon glyphicon-cog"></i> Edit Account</a></li>
+
+                            <li class="divider"></li>
+                            <li><a href=""><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
             </div>
           </nav>
         </div>
-      </div>
+
 
     </header>
 
@@ -63,5 +83,5 @@
         <%= yield %>
       </div>
     </div>
-</body>
+  </body>
 </html>

@@ -71,7 +71,7 @@ class PostsController < ApplicationController
     end
 
     def set_author
-        @author = PostsHelper::NullAuthor.new
+        @author = PostsHelper::NullUser.new
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
