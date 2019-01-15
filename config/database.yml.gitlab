@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+
+test:
+  <<: *default
+  database: rails_treinamento_guilherme_test
+  host: postgres
+  pool: 5

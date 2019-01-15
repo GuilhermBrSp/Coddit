@@ -1,0 +1,25 @@
+image: circleci/ruby:2.4.2-node-browsers
+services:
+  - name: postgres
+    alias: postgreshost
+
+variables:
+  POSTGRES_DB: rails_treinamento_guilherme_test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: ""
+
+before_script:
+  - sudo mkdir -p /cache/rails-treinamento-ruby-2-4-2
+  - sudo chmod 777 /cache/rails-treinamento-ruby-2-4-2
+  - ln -s /cache/rails-treinamento-ruby-2-4-2 ./.bundle
+  - cp ./config/database.yml.gitlab ./config/database.yml
+  - gem install bundler --no-ri --no-rdoc
+  - bundle install --jobs $(nproc) --full-index --path .bundle
+
+
+
+specs:
+  script:
+    - RAILS_ENV=test bundle exec rake db:drop db:create db:migrate db:test:prepare
+    - RAILS_ENV=test bundle exec rspec -t ~js
+    - RAILS_ENV=test xvfb-run -a --server-args='-screen 0 1680x1050x24' bundle exec rspec -t js
