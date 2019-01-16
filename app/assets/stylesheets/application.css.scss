@@ -2,6 +2,10 @@
 @import 'font-awesome';
 @import "glyphicons";
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+
 body {
     margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
 }
@@ -10,67 +14,83 @@ footer {
 	margin: 50px 0;
 }
 
+#logo-mobile
+{
+  display: none;
+  font-size: 26px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: -1px;
+padding: 15px 0;
 
+}
+#logo {
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 70px;
+  font-weight: 400;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+  padding-top: 0;
+  
+}
+#logo:after {
+  content:"Coddit";
+  position: absolute;
+  left: 8px;
+  top: 10px;
 
-.vid {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
+}
+#logo:after {
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
 }
 
-.vid iframe,
-.vid object,
-.vid embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+@media all and (max-width: 768px) {
+    #logo { display: none; }
+    #logo-mobile {display: inline;}
 }
 
-.cuadro_intro_hover{
-        padding: 0px;
-		position: relative;
-		overflow: hidden;
-		height: 200px;
-	}
-	.cuadro_intro_hover:hover .caption{
-		opacity: 1;
-		transform: translateY(-150px);
-		-webkit-transform:translateY(-150px);
-		-moz-transform:translateY(-150px);
-		-ms-transform:translateY(-150px);
-		-o-transform:translateY(-150px);
-	}
-	.cuadro_intro_hover img{
-		z-index: 4;
-	}
-	.cuadro_intro_hover .caption{
-		position: absolute;
-		top:150px;
-		-webkit-transition:all 0.3s ease-in-out;
-		-moz-transition:all 0.3s ease-in-out;
-		-o-transition:all 0.3s ease-in-out;
-		-ms-transition:all 0.3s ease-in-out;
-		transition:all 0.3s ease-in-out;
-		width: 100%;
-	}
-	.cuadro_intro_hover .blur{
-		background-color: rgba(0,0,0,0.7);
-		height: 300px;
-		z-index: 5;
-		position: absolute;
-		width: 100%;
-	}
-	.cuadro_intro_hover .caption-text{
-		z-index: 10;
-		color: #fff;
-		position: absolute;
-		height: 300px;
-		text-align: center;
-		top:-20px;
-		width: 100%;
-	}
 
 
-    
+
+.navbar-coddit
+{
+   background-image: linear-gradient(to bottom right, black,rgb(83, 83, 83));
+   font-size: 16px;
+
+}
+
+
+.navbar-account
+{
+    background-color: white;
+    width: 300px;
+    padding: 10px;
+    padding-bottom: 0px;
+    margin: auto;
+}
+
+.navbar-account-buttons
+{
+
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: center;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
