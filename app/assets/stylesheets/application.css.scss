@@ -7,7 +7,7 @@
 
 
 body {
-    margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+    margin-top: 100px;
 }
 
 footer {
@@ -17,16 +17,22 @@ footer {
 #logo-mobile
 {
   display: none;
-  font-size: 26px;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: -1px;
-padding: 15px 0;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+  padding-top: 0;
+  animation: dynamic_color_black 30s ease infinite;
+
 
 }
 #logo {
   font-family: 'Open Sans', sans-serif;
-  color: #555;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 70px;
@@ -36,8 +42,42 @@ padding: 15px 0;
   text-shadow: #EDEDED 3px 2px 0;
   position: relative;
   padding-top: 0;
-  
+  animation: dynamic_color_black 30s ease infinite;
+
 }
+
+@keyframes dynamic_color_black {
+  0%   {color: rgb(200, 200, 200);}
+  10%  {color: rgb(102, 102, 102);}
+  20%  {color: rgb(65, 65, 65);}
+  30%  {color: rgb(39, 39, 39);}
+  40%  {color: rgb(19, 19, 19);}
+  45%  {color: rgb(0, 0, 0);}
+  50%  {color: rgb(19, 19, 19);}
+  70%  {color: rgb(39, 39, 39);}
+  80%  {color: rgb(65, 65, 65);}
+  90%  {color: rgb(102, 102, 102);}
+  100% {color: rgb(200, 200, 200);}
+}
+
+
+@keyframes dynamic_color {
+  0%   {color: rgb(200, 200, 200);}
+  10%  {color: rgb(102, 102, 102);}
+  20%  {color: rgb(65, 65, 65);}
+  30%  {color: rgb(39, 39, 39);}
+  40%  {color: rgb(19, 19, 19);}
+  45%  {color: rgb(0, 0, 0);}
+  50%  {color: rgb(19, 19, 19);}
+  70%  {color: rgb(39, 39, 39);}
+  80%  {color: rgb(65, 65, 65);}
+  90%  {color: rgb(102, 102, 102);}
+  100% {color: rgb(200, 200, 200);}
+}
+
+
+
+
 #logo:after {
   content:"Coddit";
   position: absolute;
@@ -68,8 +108,10 @@ padding: 15px 0;
 {
    background-image: linear-gradient(to bottom right, black,rgb(83, 83, 83));
    font-size: 16px;
-
 }
+
+
+
 
 
 .navbar-account
@@ -93,4 +135,71 @@ padding: 15px 0;
 .icon-size
 {
     font-size: 87px;
+}
+
+
+/* <- Posts Show -> */
+.title
+{
+  font-family: helvetica;
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  top: 10%;
+
+
+
+}
+
+/* <- Vote system -> */
+
+.vote-count
+{
+  display: inline-block;
+  font-size: 70%;
+  font-weight: bold;
+
+}
+
+.vote-wrap
+{
+  font-weight: bolder;
+  text-align: center;
+  height: 100%;
+}
+.vote
+{
+
+
+
+}
+
+.favorite
+{
+  color: rgb(237, 195, 15);
+
+
+}
+
+
+/* <- Posts Index -> */
+
+.post-index
+{
+
+  background-color: #f5f5f5;
+  border-radius: 3%;
+
+}
+
+.post-body-index
+{
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.post-title-index
+{
+  width: 100%;
+  overflow-wrap: break-word;
 }

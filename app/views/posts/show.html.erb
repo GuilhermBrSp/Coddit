@@ -1,11 +1,13 @@
 <div class="row">
   <div class="col-lg-8">
 
-    <!-- the actual blog post: title/author/date/content -->
-    <h1>
-      <strong>
+    <!-- the actual post -->
+    <h1 >
+
+      <div class="title">
         <%= @post.title %>
-      </strong>
+      </div>
+
     </h1>
     <p class="lead">
       <i class="fa fa-user"></i>
@@ -20,21 +22,19 @@
       <i class="fa fa-tags"></i>
       Tags:
       <a href="">
-        <span class="badge badge-info">Bootstrap</span></a>
+        <span class="label label-info">Bootstrap</span></a>
       <a href="">
-        <span class="badge badge-info">Web</span></a>
+        <span class="label label-info">Web</span></a>
       <a href="">
-        <span class="badge badge-info">CSS</span></a>
+        <span class="label label-info">CSS</span></a>
       <a href="">
-        <span class="badge badge-info">HTML</span></a>
+        <span class="label label-info">HTML</span></a>
     </p>
 
-    <p class="lead">
+    <p class="lead"  style="word-wrap:break-word;">
       <%= @post.body %>
     </p>
     <br/>
-
-    <!-- Helyezd el ezt a címkét az utolsó +1 gomb címke mögé. -->
 
     <!-- the comment box -->
     <div class="well">
@@ -50,26 +50,177 @@
           Submit</button>
       </form>
     </div>
-    <script src="https://apis.google.com/js/plusone.js"></script>
+
     <hr>
 
     <!-- the comments -->
     <div class="comments">
-      <h3>
-        <i class="fa fa-comment"></i>
-        User One says:
-        <small>
-          9:41 PM on January 16, 2019</small>
-      </h3>
-      <p>Excellent post! Thank You the great article, it was useful!</p>
 
-      <h3>
-        <i class="fa fa-comment"></i>
-        User Two says:
-        <small>
-          9:47 PM on January 16, 2019</small>
-      </h3>
-      <p>Excellent post! Thank You the great article, it was useful!</p>
+      <div class="post-comment">
+
+        <div class="media">
+          <!-- first comment -->
+          <div class="media-heading">
+            <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> <span class="label label-default">15</span> <strong>User one: </strong> 12 hours ago
+          </div>
+
+          <div class="panel-collapse collapse in" id="collapseOne">
+            <div class="media-left">
+              <div class="vote-wrap">
+                <div class="vote up">
+                  <i class="glyphicon glyphicon-menu-up"></i>
+                </div>
+                <div class="vote down">
+                  <i class="glyphicon glyphicon-menu-down"></i>
+                </div>
+              </div>
+              <!-- vote-wrap -->
+            </div>
+            <!-- media-left -->
+
+
+            <div class="media-body">
+              <p>just a random comment passing in this web site</p>
+
+              <div class="comment-meta">
+                <span data-toggle="tolltip" title="Reply">
+                    <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample"><i class=" fa fa-reply"></i></a>
+                        </span>
+                <div class="collapse" id="replyCommentT">
+
+                    <h4>
+                      <i class="fa fa-paper-plane-o"></i>
+                      Write your Comment:</h4>
+                    <form role="form">
+                      <div class="form-group">
+                        <textarea class="form-control" rows="3"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-reply"></i>
+                        Submit</button>
+                    </form>
+
+                </div>
+              </div>
+              <!-- comment-meta -->
+
+              <div class="media">
+                <!-- first comment -->
+                <div class="media-heading">
+                  <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> <span class="label label-default">15</span> <strong>User one: </strong> 12 hours ago
+                </div>
+
+                <div class="panel-collapse collapse in" id="collapseOne">
+                  <div class="media-left">
+                    <div class="vote-wrap">
+                      <div class="vote up">
+                        <i class="glyphicon glyphicon-menu-up"></i>
+                      </div>
+                      <div class="vote down">
+                        <i class="glyphicon glyphicon-menu-down"></i>
+                      </div>
+                    </div>
+                    <!-- vote-wrap -->
+                  </div>
+                  <!-- media-left -->
+
+
+                  <div class="media-body">
+                    <p>just a random comment passing in this web site</p>
+
+                    <div class="comment-meta">
+                      <span>
+                          <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample"><i class=" fa fa-reply"></i></a>
+                              </span>
+                      <div class="collapse" id="replyCommentT">
+
+                          <h4>
+                            <i class="fa fa-paper-plane-o"></i>
+                            Write your Comment:</h4>
+                          <form role="form">
+                            <div class="form-group">
+                              <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fa fa-reply"></i>
+                              Submit</button>
+                          </form>
+
+                      </div>
+                    </div>
+                    <!-- comment-meta -->
+
+                    <div class="media">
+                      <!-- first comment -->
+                      <div class="media-heading">
+                        <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> <span class="label label-default">15</span> <strong>User one: </strong> 12 hours ago
+                      </div>
+
+                      <div class="panel-collapse collapse in" id="collapseOne">
+                        <div class="media-left">
+                          <div class="vote-wrap">
+                            <div class="vote up">
+                              <i class="glyphicon glyphicon-menu-up"></i>
+                            </div>
+                            <div class="vote down">
+                              <i class="glyphicon glyphicon-menu-down"></i>
+                            </div>
+                          </div>
+                          <!-- vote-wrap -->
+                        </div>
+                        <!-- media-left -->
+
+
+                        <div class="media-body">
+                          <p>just a random comment passing in this web site</p>
+
+                          <div class="comment-meta">
+                            <span>
+                                <a class="collapse-button" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample"><i class=" fa fa-reply"> </i></a>
+                                    </span>
+                            <div class="collapse" id="replyCommentT">
+
+                                <h4>
+                                  <i class="fa fa-paper-plane-o"></i>
+                                  Write your Comment:</h4>
+                                <form role="form">
+                                  <div class="form-group">
+                                    <textarea class="form-control" rows="3"></textarea>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-reply"></i>
+                                    Submit</button>
+                                </form>
+
+                            </div>
+                          </div>
+                          <!-- comment-meta -->
+
+
+
+
+                        </div>
+                        <!-- comment-body -->
+                      </div>
+                      <!-- comments -->
+                    </div>
+
+
+                  </div>
+                  <!-- comment-body -->
+                </div>
+                <!-- comments -->
+              </div>
+
+
+            </div>
+            <!-- comment-body -->
+          </div>
+          <!-- comments -->
+        </div>
+
+      </div>
+
     </div>
 
   </div>
