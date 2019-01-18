@@ -1,6 +1,6 @@
 module PostsHelper
 
-  class NullAuthor
+  class NullUser
     attr_accessor :name, :nick_name, :email,:password,:id
 
     def initialize()

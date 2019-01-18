@@ -1,30 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-8">
+    <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+    <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title </th>
-        <th colspan="1"></th>
-      <th>Body  </th>
-
-      <th colspan="2"></th>
-      <th>Author</th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td></td>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= @author.nick_name %></td>
-        <td><%= link_to 'Show ', post %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="media">
+        <div class="media-left">
+          <div class="vote-wrap" style="font-size:160%">
+            <div class="vote up">
+              <i class="glyphicon glyphicon-menu-up"></i>
+            </div>
+            <div class="favorite">
+              <i class="glyphicon glyphicon-star"></i>
+            </div>
+            <div class="vote down">
+              <i class="glyphicon glyphicon-menu-down"></i>
+            </div>
+          </div>
+        </div>
 
-<br>
+        <div class="media-body">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4><strong><%= post.title %></strong></h4>
+            </div>
+            <div class="panel-body" style="word-wrap: break-word;"><%= post.body.truncate(200) %></div>
+            <br>
+            <div class="panel-footer" style="word-wrap: break-word;">
+              <p>
+                <i class="fa fa-user"></i>
+                by
+                <a href="#">User Name</a>
+                |
+                <i class="fa fa-calendar"></i>
+                Sept 16th, 2012 |
+                <i class="fa fa-comment"></i>
+                <a href="#">3 Comments</a>
+                |
+                <i class="fa fa-tags"></i>
+                Tags :
+                <a href="#">
+                  <span class="label label-info">Hmtl</span></a>
+                <a href="#">
+                  <span class="label label-info">Css</span></a>
+                <a href="#">
+                  <span class="label label-info">Codus</span></a>
+                <a href="#">
+                  <span class="label label-info">Codus Day</span></a>
+                |
+                <%= link_to '<i class="fa fa-arrow-right"></i> Show'.html_safe, post %>
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <div class="col-lg-4">
+
+    <%= render "shared/side_content" %>
+
+  </div>
+</div>

@@ -2,66 +2,114 @@
 <html>
   <head>
     <title>Rails Treinamento</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="navbar navbar-default" role="navigation">
-      <div class="navbar-inner">
-        <div class="container">
-          <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a class="navbar-brand" id="logo" href="#">Coddit</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-coddit" role="navigation">
+    <a class="navbar-brand" id="logo" href="">Coddit</a>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" id="logo-mobile" href="">Coddit</a>
 
-            <div class="collapse navbar-collapse" id="navbarsExample04">
-              <% if true-%>
-                <ul class="nav navbar-nav ">
-                  <li>
-                    <%= link_to "Submit Post", new_post_path %>
-                  </li>
-                  <li>
-                    <a href="#">Account</a>
-                  </li>
-                  <li>
-                    <a href="#">Sign out</a>
-                  </li>
-                </ul>
-              <% else -%>
-                <ul class="nav navbar-nav">
-                  <li>
-                    <a href="#">Sign up</a>
-                  </li>
-                  <li>
-                    <a href="#">Sign in</a>
-                  </li>
-                </ul>
-              <% end -%>
-
-              <form class="form-inline navbar-right">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </nav>
         </div>
+
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to '<i class="fa fa-home fa-lg"></i> Home'.html_safe, root_path %>
+            </li>
+
+            <li>
+              <%= link_to '<i class="fa fa-book"></i> New Post'.html_safe, new_post_path %>
+            </li>
+
+            <li>
+              <a href=""><i class="fa fa-list"></i> My Posts</a>
+            </li>
+
+            <li>
+            <a href=""><i class="fa fa-star"></i> Favorites</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+               <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                       <span class="glyphicon glyphicon-user"></span>
+                       <span>Account</span>
+                       <span class="glyphicon glyphicon-chevron-down"></span>
+                   </a>
+                   <ul class="dropdown-menu">
+                       <li>
+                           <div class="navbar-account">
+                               <div class="row">
+                                   <div class="col-lg-4">
+                                       <p class="text-center">
+                                           <span class="glyphicon glyphicon-user icon-size"></span>
+                                       </p>
+                                   </div>
+                                   <div class="col-lg-8">
+                                       <p class="text-left"><strong>Welcome, Name</strong></p>
+                                       <p class="text-left small">Nickname</p>
+                                       <p class="text-left small">User@gmail.com</p>
+                                   </div>
+                               </div>
+                           </div>
+                       </li>
+
+
+                       <li>
+                           <div class="navbar-account navbar-account-buttons">
+                               <div class="row">
+                                   <div class="col-lg-12" >
+                                           <a href="#" class="btn btn-primary " style="width:100%"><i class="fa fa-cog"></i> Update Account</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </li>
+                       <li>
+                           <div class="navbar-account navbar-account-buttons">
+                               <div class="row">
+                                   <div class="col-lg-12">
+                                           <a href="#" class="btn btn-danger" style="width:100%"><i class="fa fa-power-off"></i> Logout</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </li>
+                   </ul>
+               </li>
+           </ul>
+        </div>
+        <!-- /.navbar-collapse -->
       </div>
+      <!-- /.container -->
+    </nav>
 
-    </header>
+    <div class="container">
 
-    <div id="main_content" class="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag(:div, msg, class: "alert alert-info") %>
-      <% end %>
 
-      <div id="content" class="col-md-9 center-block">
         <%= yield %>
-      </div>
+
+
+
+      <hr>
+
+      <footer></footer>
+
     </div>
-</body>
+
+
+  </body>
 </html>
