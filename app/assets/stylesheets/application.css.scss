@@ -155,9 +155,9 @@ footer {
 
 .vote-count
 {
-  display: inline-block;
-  font-size: 70%;
-  font-weight: bold;
+height: 100%;
+
+
 
 }
 
@@ -167,16 +167,24 @@ footer {
   text-align: center;
   height: 100%;
 }
-.vote
+.vote.up
 {
 
 
+
+
+}
+
+.vote.down
+{
+    color: rgb(181, 24, 24);
 
 }
 
 .favorite
 {
   color: rgb(237, 195, 15);
+  font-size: 150%;
 
 
 }
