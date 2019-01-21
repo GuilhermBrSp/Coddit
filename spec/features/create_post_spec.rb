@@ -28,6 +28,9 @@ describe 'As a user' do
     click_button 'Create Post'
     expect(Post.count).to eq 0
 
+    expect(page).to have_selector '#error_explanation'
+    expect(page).to have_selector 'li', text:"Body can't be blank"
+
 
   end
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a user' do
-  it 'I want to click on the post and see its content' do
+  it 'I can to click on the post and see its content' do
     def create_post
       Post.create( title:"Post Title", body:"Post Body" )
     end
