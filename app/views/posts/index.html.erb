@@ -20,7 +20,7 @@
         <div class="media-body">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4><strong><%= post.title %></strong>
+              <h4><strong><%= link_to post.title ,post %></strong>
                 <div class="favorite">
                   <i class="glyphicon glyphicon-star" data-toggle="tooltip" title="Add to favorites"></i>
                 </div> </h4>
@@ -49,7 +49,7 @@
                   <span class="label label-info">Codus</span></a>
                 |
                 <i class ="fa fa-arrow-right"></i>
-                <%= link_to 'Show', root_path, class: "btn btn-primary btn-xs" %>
+                <%= link_to 'Show', post, class: "btn btn-primary btn-xs" %>
               </p>
 
             </div>
