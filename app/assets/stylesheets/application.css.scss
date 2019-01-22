@@ -1,6 +1,7 @@
 @import 'bootstrap.min';
 @import 'font-awesome';
-@import "glyphicons";
+@import 'glyphicons';
+@import 'bootstrap';
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
@@ -211,4 +212,24 @@ height: 100%;
 {
   width: 100%;
   overflow-wrap: break-word;
+}
+
+#error_explanation {
+  color: rgb(226, 21, 21);
+  ul {
+    color: rgb(226, 21, 21);
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: rgb(226, 21, 21);
+  }
+}
+
+.alert-notice
+{
+  color: rgb(226, 21, 21);
 }

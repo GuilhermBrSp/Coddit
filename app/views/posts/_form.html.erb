@@ -2,6 +2,7 @@
 
 <div class="well">
 <%= form_with(model: post, local: true) do |form| %>
+
 <% if post.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(post.errors.count, "error") %>
