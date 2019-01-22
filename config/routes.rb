@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :home, only: :index
   resources :posts, only: [:new, :create, :index, :show]
   resources :posts do
-    resources :comments
+    resources :comments, only: [:create]
   end
 end

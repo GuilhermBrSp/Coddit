@@ -4,16 +4,17 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
 
-    respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        redirect_to @post
       else
-        format.html { render action: "new" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+
+        flash[:notice] = "You can't leave the comment in blank"
+        redirect_to @post
       end
-    end
+
   end
+
+
     private
 
     def comment_params
