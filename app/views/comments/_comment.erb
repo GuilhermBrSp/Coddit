@@ -1,76 +1,76 @@
 <% unless comment.created_at.nil? %>
 
-<div class="media comment">
-  <!-- first comment -->
-  <div class="media-heading">
-    <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample">
-      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-    <span class="label label-default">15</span>
-    <strong>User one:
-    </strong>
-    <%= time_ago_in_words(comment.created_at) %>
-    ago
-  </div>
-
-  <div class="panel-collapse collapse in" id="collapseOne">
-    <div class="media-left">
-      <div class="vote-wrap">
-        <div class="vote up">
-          <i class="glyphicon glyphicon-menu-up"></i>
-        </div>
-        <div class="vote down">
-          <i class="glyphicon glyphicon-menu-down"></i>
-        </div>
-      </div>
-      <!-- vote-wrap -->
+  <div class="media comment">
+    <!-- first comment -->
+    <div class="media-heading">
+      <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample">
+        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+      <span class="label label-default">15</span>
+      <strong>User one:
+      </strong>
+      <%= time_ago_in_words(comment.created_at) %>
+      ago
     </div>
-    <!-- media-left -->
 
-    <div class="media-body comment-body">
-      <p><%=comment.body %></p>
+    <div class="panel-collapse collapse in" id="collapseOne">
+      <div class="media-left">
+        <div class="vote-wrap">
+          <div class="vote up">
+            <i class="glyphicon glyphicon-menu-up"></i>
+          </div>
+          <div class="vote down">
+            <i class="glyphicon glyphicon-menu-down"></i>
+          </div>
+        </div>
+        <!-- vote-wrap -->
+      </div>
+      <!-- media-left -->
 
-      <div class="comment-meta">
-        <span data-toggle="tolltip" title="Reply">
-          <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample">
-            <i class=" fa fa-reply"></i>
-          </a>
-        </span>
+      <div class="media-body comment-body">
+        <p><%=comment.body %></p>
 
+        <div class="comment-meta">
+          <span data-toggle="tolltip" title="Reply">
+            <a class="" role="button" data-toggle="collapse" href="#replyComment" aria-expanded="false" aria-controls="collapseExample">
+              <i class=" fa fa-reply"></i>
+            </a>
+          </span>
 
-          <%= form_with model:[comment, Comment.new] do |f| %>
+          <div class="collapse" id="replyComment">
+            <%= form_with model:[comment, Comment.new] do |f| %>
 
-          <% [:info, :error].each do |key| %>
-            <% if flash[key] %>
-            <div class="<%= key %>" id="flash">
-              <%= flash[key] %>
-            </div>
+            <% [:info, :error].each do |key| %>
+              <% if flash[key] %>
+                <div class="<%= key %>" id="flash">
+                  <%= flash[key] %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
 
-          <div class="form-group">
-            <div class="field">
-              <h4>
-                <i class="fa fa-paper-plane-o"></i>
-                <%= f.label :body, 'Leave a Comment' %>
-               </h4>
+            <div class="form-group">
+              <div class="field">
+                <h4>
+                  <i class="fa fa-paper-plane-o"></i>
+                  <%= f.label :body, 'Leave a Comment' %>
+                </h4>
 
                 <%= f.text_area :body, id: :comment_body, class: "form-control"%>
+              </div>
             </div>
-          </div>
-          <br>
+            <br>
 
-          <div class="form-group">
-            <div class="actions">
-              <%= f.submit "Add Comment", class: "btn btn-primary" %>
+            <div class="form-group">
+              <div class="actions">
+                <%= f.submit "Add Comment", class: "btn btn-primary" %>
+              </div>
             </div>
-          </div>
 
           <% end %>
 
-
+        </div>
       </div>
       <!-- comment-meta -->
-     <%= render partial: 'comments/comment', collection: comment.comments %>
+      <%= render partial: 'comments/comment', collection: comment.comments %>
     </div>
     <!-- comment-body -->
   </div>
