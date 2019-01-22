@@ -56,7 +56,8 @@
 
       <div class='post-comments'>
 
-        <%= render @post.comments %>
+        <%=  render(partial: 'comments/comment', collection: @post.comments)  %>
+
 
       </div>
 

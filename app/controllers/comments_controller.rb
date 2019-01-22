@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
 
       if @comment.save
-        redirect_to @post
+        redirect_back fallback_location: root_path
       else
         flash[:notice] = "You can't leave the comment in blank"
-        redirect_to @post
+        redirect_back fallback_location: root_path
       end
 
   end

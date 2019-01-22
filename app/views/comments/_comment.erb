@@ -35,24 +35,42 @@
             <i class=" fa fa-reply"></i>
           </a>
         </span>
-        <div class="collapse" id="replyCommentT">
 
-          <h4>
-            <i class="fa fa-paper-plane-o"></i>
-            Write your Comment:</h4>
-          <form role="form">
-            <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
+
+          <%= form_with model:[comment, Comment.new] do |f| %>
+
+          <% [:info, :error].each do |key| %>
+            <% if flash[key] %>
+            <div class="<%= key %>" id="flash">
+              <%= flash[key] %>
             </div>
-            <button type="submit" class="btn btn-primary">
-              <i class="fa fa-reply"></i>
-              Submit</button>
-          </form>
+            <% end %>
+          <% end %>
 
-        </div>
+          <div class="form-group">
+            <div class="field">
+              <h4>
+                <i class="fa fa-paper-plane-o"></i>
+                <%= f.label :body, 'Leave a Comment' %>
+               </h4>
+
+                <%= f.text_area :body, id: :comment_body, class: "form-control"%>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <div class="actions">
+              <%= f.submit "Add Comment", class: "btn btn-primary" %>
+            </div>
+          </div>
+
+          <% end %>
+
+
       </div>
       <!-- comment-meta -->
-
+     <%= render partial: 'comments/comment', collection: comment.comments %>
     </div>
     <!-- comment-body -->
   </div>
