@@ -1,0 +1,61 @@
+<% unless comment.created_at.nil? %>
+
+<div class="media comment">
+  <!-- first comment -->
+  <div class="media-heading">
+    <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample">
+      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+    <span class="label label-default">15</span>
+    <strong>User one:
+    </strong>
+    <%= time_ago_in_words(comment.created_at) %>
+    ago
+  </div>
+
+  <div class="panel-collapse collapse in" id="collapseOne">
+    <div class="media-left">
+      <div class="vote-wrap">
+        <div class="vote up">
+          <i class="glyphicon glyphicon-menu-up"></i>
+        </div>
+        <div class="vote down">
+          <i class="glyphicon glyphicon-menu-down"></i>
+        </div>
+      </div>
+      <!-- vote-wrap -->
+    </div>
+    <!-- media-left -->
+
+    <div class="media-body comment-body">
+      <p><%=comment.body %></p>
+
+      <div class="comment-meta">
+        <span data-toggle="tolltip" title="Reply">
+          <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample">
+            <i class=" fa fa-reply"></i>
+          </a>
+        </span>
+        <div class="collapse" id="replyCommentT">
+
+          <h4>
+            <i class="fa fa-paper-plane-o"></i>
+            Write your Comment:</h4>
+          <form role="form">
+            <div class="form-group">
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-reply"></i>
+              Submit</button>
+          </form>
+
+        </div>
+      </div>
+      <!-- comment-meta -->
+
+    </div>
+    <!-- comment-body -->
+  </div>
+  <!-- comments -->
+</div>
+<% end %>
