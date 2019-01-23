@@ -16,6 +16,14 @@ footer {
 	margin: 50px 0;
 }
 
+.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
+
+.pagination-list
+{
+  width: 100%;
+}
+
+
 #logo-mobile
 {
   display: none;

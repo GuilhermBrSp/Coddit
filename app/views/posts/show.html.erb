@@ -56,10 +56,13 @@
 
       <div class='post-comments'>
 
-        <%=  render(partial: 'comments/comment', collection: @post.comments)  %>
+        <%=  render partial: 'comments/comment', collection: @post.comments.limit(10) %>
+        <button type="button" name="button"> Show more</button>
+
 
 
       </div>
+
 
     </div>
 

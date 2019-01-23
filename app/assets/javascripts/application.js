@@ -15,3 +15,4 @@
 //= require jquery
 //= require_tree .
 //= require bootstrap.min
+//= require nested_comments.js
