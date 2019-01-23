@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
 
       if @comment.save
+        increment_comments_counter
         redirect_back fallback_location: root_path
       else
         flash[:notice] = "You can't leave the comment in blank"
@@ -24,5 +25,13 @@ class CommentsController < ApplicationController
     def find_commentable
       @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
       @commentable = Post.find_by_id(params[:post_id]) if params[:post_id]
+    end
+
+    def increment_comments_counter
+      parent = @commentable
+      while parent.is_a? Comment do
+        parent = parent.commentable
+      end
+      parent.increment! :comments_counter
     end
 end
