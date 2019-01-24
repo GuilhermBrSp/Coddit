@@ -41,12 +41,7 @@
                 |
                 <i class="fa fa-tags"></i>
                 Tags :
-                <a href="#">
-                  <span class="label label-info">Hmtl</span></a>
-                <a href="#">
-                  <span class="label label-info">Css</span></a>
-                <a href="#">
-                  <span class="label label-info">Codus</span></a>
+              <%= render partial: 'posts/posts_tags', collection: post.tags.limit(3), :as => :tag  %>
                 |
                 <i class ="fa fa-arrow-right"></i>
                 <%= link_to 'Show', post, class: "btn btn-primary btn-xs" %>

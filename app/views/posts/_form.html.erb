@@ -22,12 +22,7 @@
   </div>
 </div>
 
-<div class="form-group">
-  <div class="field">
-  <%= form.label :tag_list, "Tags (separated by commas)" %><br />
-  <%= form.text_field :tag_list %>
-</div>
-</div>
+
 
 
 <div class="form-group">
@@ -35,6 +30,13 @@
     <%= form.label :body %>
     <%= form.text_area :body, id: :post_body, class: "form-control", rows: 20%>
   </div>
+</div>
+
+<div class="form-group">
+  <div class="field">
+  <%= form.label :tag_list  %><br />
+  <%= form.text_field :tag_list, id: :post_tags,'data-role'=>"tagsinput" %>
+</div>
 </div>
 
 

@@ -16,3 +16,4 @@
 //= require_tree .
 //= require bootstrap.min
 //= require nested_comments.js
+//= require bootstrap-tagsinput
