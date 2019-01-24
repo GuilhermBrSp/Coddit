@@ -10,25 +10,26 @@ $(document).on('turbolinks:load', function() {
   // Comments comment show comments toggle //
   $(".comments-button").click(function() {
     $(this).first().parent('span').parent('div').siblings('.panel-collapse').toggle('collapse');
-  });
-
-
-
-  $('.expand-button').on('click', function() {
-    var $this = $(this),
-      $parent = typeof $this.data('parent') !== 'undefined' ? $($this.data('parent')) : undefined;
-    if ($parent === undefined) {
-      /* Just toggle my  */
-      $this.find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
-      return true;
+    if ($(this).attr('title') == 'Show Comments')
+    {
+      $(this).attr('title','Hide Comments')
+      console.log('hide comments')
     }
+    else
+    {
+      $(this).attr('title','Show Comments')
 
-    /* Open element will be close if parent !== undefined */
-    var currentIcon = $this.find('.glyphicon');
-    currentIcon.toggleClass('glyphicon-plus glyphicon-minus');
-    $parent.find('.glyphicon').not(currentIcon).removeClass('glyphicon-minus').addClass('glyphicon-plus');
-
+    }
   });
+
+
+
+  // Slowly removing flash messages //
+  $(document).ready(function(){
+  setTimeout(function(){
+    $('#flash').hide('slow', function(){ $('#flash').remove(); });
+  }, 5000);
+ })
 
 
   // ...

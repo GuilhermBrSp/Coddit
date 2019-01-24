@@ -7,9 +7,10 @@ class CommentsController < ApplicationController
 
       if @comment.save
         increment_comments_counter
+        flash[:success] = "Comment Created With success"
         redirect_back fallback_location: root_path
       else
-        flash[:notice] = "You can't leave the comment in blank"
+        flash[:danger] = "You can't leave the comment in blank"
         redirect_back fallback_location: root_path
       end
 

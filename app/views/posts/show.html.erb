@@ -41,10 +41,6 @@
     <!-- the comment box -->
     <div class="well">
 
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-
       <%= render partial: 'comments/new_post_comment' %>
 
     </div>
@@ -54,15 +50,17 @@
     <!-- the comments -->
     <div class='comments'>
 
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>" id="flash"><%= value %></div>
+      <% end %>
+
       <div class='post-comments'>
 
-        <%=  render partial: 'comments/comment', collection: @post.comments.limit(10) %>
-        <button type="button" name="button"> Show more</button>
+        <%= render partial: 'comments/comment', collection: @post.comments.limit(10) %>
 
 
 
       </div>
-
 
     </div>
 
