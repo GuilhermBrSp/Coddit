@@ -1,14 +1,4 @@
-
-
 <%= form_with model:[@post, Comment.new] do |f| %>
-
-<% [:info, :error].each do |key| %>
-  <% if flash[key] %>
-  <div class="<%= key %>" id="flash">
-    <%= flash[key] %>
-  </div>
-  <% end %>
-<% end %>
 
 <div class="form-group">
   <div class="field">

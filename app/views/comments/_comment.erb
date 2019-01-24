@@ -1,61 +1,90 @@
 <% unless comment.created_at.nil? %>
 
-<div class="media comment">
-  <!-- first comment -->
-  <div class="media-heading">
-    <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample">
-      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-    <span class="label label-default">15</span>
-    <strong>User one:
-    </strong>
-    <%= time_ago_in_words(comment.created_at) %>
-    ago
-  </div>
+  <div class="media comment">
+    <!-- first comment -->
+    <div class="media-heading">
 
-  <div class="panel-collapse collapse in" id="collapseOne">
-    <div class="media-left">
-      <div class="vote-wrap">
-        <div class="vote up">
-          <i class="glyphicon glyphicon-menu-up"></i>
-        </div>
-        <div class="vote down">
-          <i class="glyphicon glyphicon-menu-down"></i>
-        </div>
-      </div>
-      <!-- vote-wrap -->
+      <span class="label label-default">15</span>
+      <strong>User one:
+      </strong>
+      <%= time_ago_in_words(comment.created_at) %>
+      ago
     </div>
-    <!-- media-left -->
 
-    <div class="media-body comment-body">
-      <p><%=comment.body %></p>
 
-      <div class="comment-meta">
-        <span data-toggle="tolltip" title="Reply">
-          <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample">
-            <i class=" fa fa-reply"></i>
-          </a>
-        </span>
-        <div class="collapse" id="replyCommentT">
+      <div class="media-left">
+        <div class="vote-wrap">
+          <div class="vote up">
+            <i class="glyphicon glyphicon-menu-up"></i>
+          </div>
+          <div class="vote down">
+            <i class="glyphicon glyphicon-menu-down"></i>
+          </div>
+        </div>
+        <!-- vote-wrap -->
+      </div>
+      <!-- media-left -->
 
-          <h4>
-            <i class="fa fa-paper-plane-o"></i>
-            Write your Comment:</h4>
-          <form role="form">
+      <div class="media-body comment-body">
+        <p> <%= comment.body %></p>
+
+
+        <div class="comment-meta">
+
+          <span data-toggle="tolltip" title="Reply" class="Reply">
+            <a class="reply-button" role="button" >
+              <i class=" fa fa-reply"> Reply</i>
+            </a>
+          </span>
+          
+          <span >
+            <% if comment.commentable.is_a? Post %>
+            <a class="comments-button" role="button" data-toggle="tolltip" title="Hide Comments">
+            <% else %>
+            <a class="comments-button" role="button" data-toggle="tolltip" title="Show Comments">
+            <% end %>
+            <i class=" fa fa-comments"> <%= comment.comments.count %></i>
+            </a>
+          </span>
+
+          <div class="collapse reply-collapse">
+            <%= form_with model:[comment, Comment.new] do |f| %>
+
+
             <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
+              <div class="field">
+                <h4>
+                  <i class="fa fa-paper-plane-o"></i>
+                  <%= f.label :body, 'Leave a Reply'%>
+                </h4>
+                <%= f.text_area :body, id: :"comment_id_#{comment.id}", class: "form-control reply-field"%>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary">
-              <i class="fa fa-reply"></i>
-              Submit</button>
-          </form>
+            <br>
+
+            <div class="form-group">
+              <div class="actions">
+                <%= f.submit "Add Reply", class: "btn btn-primary" %>
+              </div>
+            </div>
+
+          <% end %>
 
         </div>
+
       </div>
       <!-- comment-meta -->
+      <% if comment.commentable.is_a? Post %>
+        <div class="panel-collapse collapse in" id="collapse">
+      <% else %>
+        <div class="panel-collapse collapse" id="collapse">
+      <% end %>
+        <%=  render partial: 'comments/comment', collection: comment.comments.limit(10) %>
 
+        </div>
     </div>
     <!-- comment-body -->
-  </div>
+
   <!-- comments -->
 </div>
 <% end %>
