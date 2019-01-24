@@ -28,21 +28,22 @@
       <div class="media-body comment-body">
         <p> <%= comment.body %></p>
 
+
         <div class="comment-meta">
-          <span data-toggle="tolltip" title="Reply">
-            <a class="reply-button" role="button">
+
+          <span data-toggle="tolltip" title="Reply" class="Reply">
+            <a class="reply-button" role="button" >
               <i class=" fa fa-reply"> Reply</i>
             </a>
           </span>
+          
           <span >
             <% if comment.commentable.is_a? Post %>
             <a class="comments-button" role="button" data-toggle="tolltip" title="Hide Comments">
             <% else %>
             <a class="comments-button" role="button" data-toggle="tolltip" title="Show Comments">
             <% end %>
-
-
-              <i class=" fa fa-comments"> <%= comment.comments.count %></i>
+            <i class=" fa fa-comments"> <%= comment.comments.count %></i>
             </a>
           </span>
 
@@ -54,17 +55,16 @@
               <div class="field">
                 <h4>
                   <i class="fa fa-paper-plane-o"></i>
-                  <%= f.label :body, 'Leave a Reply' %>
+                  <%= f.label :body, 'Leave a Reply'%>
                 </h4>
-
-                <%= f.text_area :body, id: :comment_body, class: "form-control"%>
+                <%= f.text_area :body, id: :"comment_id_#{comment.id}", class: "form-control reply-field"%>
               </div>
             </div>
             <br>
 
             <div class="form-group">
               <div class="actions">
-                <%= f.submit "Add Comment", class: "btn btn-primary" %>
+                <%= f.submit "Add Reply", class: "btn btn-primary" %>
               </div>
             </div>
 
@@ -80,7 +80,7 @@
         <div class="panel-collapse collapse" id="collapse">
       <% end %>
         <%=  render partial: 'comments/comment', collection: comment.comments.limit(10) %>
-        
+
         </div>
     </div>
     <!-- comment-body -->
