@@ -15,19 +15,9 @@ describe 'As a user' , js:true do
 
     find("[class='reply-button']").click
 
-    click_button 'SHDSAH'
+    fill_in 'comment_id_1', with: "This is a comments comment"
 
-
-
-
-
-
-
-
-
-
-
-
+    click_button 'Add Reply'
 
   end
 end
