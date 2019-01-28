@@ -45,6 +45,7 @@ GEM
     arel (8.0.0)
     ast (2.3.0)
     bindex (0.5.0)
+    bootstrap_tagsinput_rails (0.4.0)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.14.0)
@@ -254,6 +255,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap_tagsinput_rails
   byebug
   capybara (= 2.14.0)
   chromedriver-helper
