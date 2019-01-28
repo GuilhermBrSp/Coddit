@@ -4,11 +4,21 @@
       <i class="fa fa-search"></i>
       Search For Posts ...</h4>
     <div class="input-group">
-      <input type="text" class="form-control">
+
+
+      <%= form_tag("/search", method: "get") do %>
+        <%= label_tag(:query_params, "Search for:") %>
+        <%= text_field_tag(:query_params) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">
-          <i class="fa fa-search"></i>
-        </button>
+
+        <%= button_to 'search', {:controller => :queries,
+      :action => 'search'}, class: "btn btn-default" do %>
+              <i class="fa fa-search"></i>
+        <% end %>
+
       </span>
     </div>
   </div>
