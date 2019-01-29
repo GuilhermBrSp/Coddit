@@ -23,14 +23,7 @@
     <p>
       <i class="fa fa-tags"></i>
       Tags:
-      <a href="">
-        <span class="label label-info">Bootstrap</span></a>
-      <a href="">
-        <span class="label label-info">Web</span></a>
-      <a href="">
-        <span class="label label-info">CSS</span></a>
-      <a href="">
-        <span class="label label-info">HTML</span></a>
+      <%= render partial: 'posts/posts_tags', collection: @post.tags, :as => :tag  %>
     </p>
 
     <p class="lead" style="word-wrap:break-word;">

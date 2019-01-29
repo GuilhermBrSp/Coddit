@@ -15,24 +15,31 @@
   </div>
 <% end %>
 
+
+  <%= form.label :tag_list  %><br />
+  <%= form.text_field :tag_list, id: :post_tags,'data-role'=>"tagsinput" %>
+
+
+
+
 <div class="form-group">
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :post_title, class: "form-control" %>
   </div>
 </div>
-<div class="form-group">
-  <div class="field">
-    <label for="">Tags</label>
-    <input id="post_tags" class="form-control" type="text" name="post[tags]" placeholder="Plage your tags here!">
-  </div>
-</div>
+
+
+
+
 <div class="form-group">
   <div class="field">
     <%= form.label :body %>
     <%= form.text_area :body, id: :post_body, class: "form-control", rows: 20%>
   </div>
 </div>
+
+
 
 
 <div class="form-group">
