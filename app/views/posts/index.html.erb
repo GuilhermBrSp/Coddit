@@ -20,10 +20,14 @@
         <div class="media-body">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4><strong><%= link_to post.title ,post %></strong>
+              <h4>
+                <strong><%= link_to post.title ,post %></strong>
                 <div class="favorite">
-                  <i class="glyphicon glyphicon-star" data-toggle="tooltip" title="Add to favorites"></i>
-                </div> </h4>
+
+                  <%= button_to "add to favorite", favorites_path , params: { id: post.id }, :remote => true%>
+
+                </div>
+              </h4>
             </div>
             <div class="panel-body" style="word-wrap: break-word;"><%= post.body.truncate(200) %></div>
             <br>
@@ -34,16 +38,16 @@
                 <a href="#">User Name</a>
                 |
                 <i class="fa fa-clock-o"></i>
-                <%= time_ago_in_words(post.created_at) %> ago
-                |
+                <%= time_ago_in_words(post.created_at) %>
+                ago |
                 <i class="fa fa-comment"></i>
-              <%=post.comments_counter %> Comments
-                |
+                <%=post.comments_counter %>
+                Comments |
                 <i class="fa fa-tags"></i>
                 Tags :
-              <%= render partial: 'posts/posts_tags', collection: post.tags.limit(3), :as => :tag  %>
+                <%= render partial: 'posts/posts_tags', collection: post.tags.limit(3), :as => :tag %>
                 |
-                <i class ="fa fa-arrow-right"></i>
+                <i class="fa fa-arrow-right"></i>
                 <%= link_to 'Show', post, class: "btn btn-primary btn-xs" %>
               </p>
 

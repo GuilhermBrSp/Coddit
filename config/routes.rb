@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   resources :home, only: :index
 
-  resources :posts, only: [:new, :create, :index, :show]
+  resources :posts, only: %i[new create index show]
 
   resources :posts do
     resources :comments, only: [:create]
@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'query#search', as: 'search'
-
-
+  post'/favorites', to: 'posts#to_favor', as: 'favorites'
 end
