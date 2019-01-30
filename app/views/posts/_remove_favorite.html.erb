@@ -1,0 +1,3 @@
+<%= link_to remove_favorite_path(:id =>post_id), :remote => true, method: :delete, :class=>'favorites-button', :id => "favorite_id_#{post_id}" do%>
+<i class="fa fa-star" style="color:red" data-toggle="tooltip" title="Remove Post from Favorites"></i>
+<%  end %>

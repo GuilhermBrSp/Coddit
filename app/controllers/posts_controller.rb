@@ -21,17 +21,26 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def to_favor
-    @post = Post.find(params[:id]).favorites.new(token_id: @token_id)
+  def add_favorite
+    @post = Post.find(params[:id]).favorites.where(token_id: @token_id).first_or_create!
 
     respond_to do |format|
-      if @post.save
-        format.js
-      else
-        format.js
-      end
+        format.js { @icon_id = params[:id]}
     end
 end
+
+def remove_favorite
+
+  Post.find(params[:id]).favorites.find_by(token_id:@token_id).destroy
+
+
+
+  respond_to do |format|
+      format.js { @icon_id = params[:id]}
+  end
+
+end
+
 
   private
 
