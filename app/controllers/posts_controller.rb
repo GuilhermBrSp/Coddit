@@ -14,7 +14,13 @@ class PostsController < ApplicationController
   end
 
   def index
+
+    if params[:favorites]
+      @posts = Post.joins(:favorites).where('favorites.token_id = ?',@token_id)
+
+    else
     @posts = Post.all
+  end
   end
 
   def show
