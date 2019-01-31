@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'query#search', as: 'search'
-  post'/favorites/add', to: 'posts#add_favorite', as: 'add_favorite'
-  delete'/favorites/remove', to: 'posts#remove_favorite', as: 'remove_favorite'
+  post'/favorites/add', to: 'posts#add_favorite', as: 'add_favorite', defaults: { format: 'js'}
+  delete'/favorites/remove', to: 'posts#remove_favorite', as: 'remove_favorite', defaults: { format: 'js'} 
 end

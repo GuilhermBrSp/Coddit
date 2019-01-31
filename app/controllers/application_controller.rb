@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def generate_token_id
-    if Favorite.last.id
+    if Favorite.last && Favorite.last.id
       Favorite.last.id + 1
     else
       1
