@@ -9,15 +9,25 @@
       <i class="fa fa-search"></i>
       <%= label_tag(:query_params, "Search For Posts ...") %>
     </h4>
-      <%= select_tag "sort_criteria", options_for_select([ "Newest", "Comments" ], "Newest"), class:"form-control", style:'width:30%'%>
 
-    <%= text_field_tag(:query_params,"",class:'form-control', placeholder: 'tags, titles, contents',style:'width:60%' )%>
+
+
+
+
+    <%= text_field_tag(:query_params,"",class:'form-control', placeholder: 'tags, titles, contents',style:'width:80%; padding-left:20px' )%>
 
     <span class="input-group-btn">
       <%= button_tag :submit, class:'btn btn-default', id:'search button' do %>
       <i class="fa fa-search"></i>
     <% end %>
   </span>
+
+  <h4>
+    <i class="fa fa-sort"></i>
+    <%= label_tag(:sort_criteria, "Sort your Search") %>
+  </h4>
+        <%= select_tag "sort_criteria", options_for_select([ "Newest", "Most Commented" ], "Newest"), class:"form-control", style:'width:80%'%>
+
 
 
 <% end %>
