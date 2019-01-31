@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments, only: [:create]
   end
+
+  get '/search', to: 'query#search', as: 'search'
+
+
 end

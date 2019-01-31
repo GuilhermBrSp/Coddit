@@ -1,15 +1,25 @@
 
   <div class="well">
-    <h4>
-      <i class="fa fa-search"></i>
-      Search For Posts ...</h4>
+
     <div class="input-group">
-      <input type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">
-          <i class="fa fa-search"></i>
-        </button>
-      </span>
+
+      <%= form_tag("/search", method: "get") do %>
+   <h4>
+     <i class="fa fa-search"></i>
+     <%= label_tag(:query_params, "Search For Posts ...") %>
+   </h4>
+
+   <%= text_field_tag(:query_params,"",class:'form-control', placeholder: 'tags, titles, contents',style:'width:84%' )%>
+
+   <span class="input-group-btn">
+     <%= button_tag :submit, class:'btn btn-default', id:'search button' do %>
+     <i class="fa fa-search"></i>
+   <% end %>
+ </span>
+<% end %>
+
+
+
     </div>
   </div>
   <!-- /well -->
