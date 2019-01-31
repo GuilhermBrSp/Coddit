@@ -17,7 +17,9 @@ class QueryController < ApplicationController
         render 'queries/query_no_result.erb'
 
       else
-        render 'queries/query_result'
+        sort_result
+        @posts = @query_result
+        render 'posts/index'
       end
     end
   end
@@ -26,6 +28,14 @@ class QueryController < ApplicationController
 
   def posts_match(query, keyword)
     query.joins('left join taggings on taggings.post_id = posts.id').joins('left join tags on tags.id = taggings.tag_id').where('posts.title ILIKE ? OR posts.body ILIKE ? OR tags.name = ?', "%#{keyword}%", "%#{keyword}%", keyword.to_s).distinct
+  end
+
+  def sort_result
+    if params[:sort_criteria] == 'Newest'
+      @query_result = @query_result.order('created_at DESC')
+    elsif params[:sort_criteria] == 'Comments'
+      @query_result = @query_result.order('comments_counter DESC NULLS LAST')
+    end
   end
 
   def normalized_keywords
