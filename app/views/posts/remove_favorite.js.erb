@@ -1,1 +1,2 @@
 $('.favorite_partial_<%= @icon_id%>').html("<%= escape_javascript(render partial: 'posts/add_favorite', locals: {post_id: @icon_id}) %>");
+  jQuery('[data-toggle="tooltip"]').tooltip();

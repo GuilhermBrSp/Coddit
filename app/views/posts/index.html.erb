@@ -27,11 +27,11 @@
                   <% if Favorite.where(token_id:@token_id,post_id:post.id).exists? %>
 
                   <%= link_to remove_favorite_path(:id => post.id), :remote => true, method: :delete, :class=>'favorites-button', :id => "favorite_id_#{post.id}" do%>
-                  <i class="fa fa-star" style="color:red" data-toggle="tooltip" title="Remove Post from Favorites"></i>
+                  <i class="fa fa-star " data-toggle="tooltip" title="Remove Post From Favorites" data-placement="left" style="-webkit-text-fill-color: yellow;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;"></i>
                 <%  end %>
                 <% else %>
                 <%= link_to add_favorite_path(:id => post.id), :remote => true, method: :post, :class=>'favorites-button', :id => "favorite_id_#{post.id}" do%>
-                <i class="fa fa-star" data-toggle="tooltip" title="Add Post to Favorites"></i>
+                <i class="fa fa-star" data-toggle="tooltip" title="Add Post to Favorites" data-placement="left" style="-webkit-text-fill-color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;"></i>
               <%  end %>
 
               <% end %>
