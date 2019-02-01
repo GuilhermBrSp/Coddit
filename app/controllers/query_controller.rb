@@ -4,7 +4,7 @@ class QueryController < ApplicationController
 
     if keywords.empty?
       @query_not_found = 'Blank value'
-      render 'queries/query_no_result.erb'
+      render 'queries/query_no_result.html.erb'
     else
 
       @query_result = Post.joins('left join taggings on taggings.post_id = posts.id').joins('left join tags on tags.id = taggings.tag_id').where('posts.title ILIKE ? OR posts.body ILIKE ? OR tags.name = ?', "%#{keywords[0]}%", "%#{keywords[0]}%", (keywords[0]).to_s).distinct
@@ -14,10 +14,12 @@ class QueryController < ApplicationController
 
       if @query_result.count == 0
         @query_not_found = "'#{keywords.join(',')}'"
-        render 'queries/query_no_result.erb'
+        render 'queries/query_no_result.html.erb'
 
       else
-        render 'queries/query_result'
+        sort_result_by_criteria
+        @posts = @query_result
+        render 'posts/index'
       end
     end
   end
@@ -26,6 +28,14 @@ class QueryController < ApplicationController
 
   def posts_match(query, keyword)
     query.joins('left join taggings on taggings.post_id = posts.id').joins('left join tags on tags.id = taggings.tag_id').where('posts.title ILIKE ? OR posts.body ILIKE ? OR tags.name = ?', "%#{keyword}%", "%#{keyword}%", keyword.to_s).distinct
+  end
+
+  def sort_result_by_criteria
+    if params[:sort_criteria] == 'Newest'
+      @query_result = @query_result.order('created_at DESC')
+    elsif params[:sort_criteria] == 'Most Commented'
+      @query_result = @query_result.order('comments_counter DESC NULLS LAST')
+    end
   end
 
   def normalized_keywords
