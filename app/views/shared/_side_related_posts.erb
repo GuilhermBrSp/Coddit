@@ -1,11 +1,10 @@
   <!-- /well -->
-<div class="well">
+<div class="well" id="related_posts">
   <h4>
     <i class="fa fa-list-alt">
     </i>
     Related Posts:
   </h4>
-
   <ul>
       <% @related_posts.each do |post| %>
     <li><%= link_to post.title, post %></li>

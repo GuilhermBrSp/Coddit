@@ -62,7 +62,7 @@
   <div class="col-lg-4">
     <%= render 'shared/side_content'%>
 
-    <%= render 'shared/side_related_posts' %>
+    <%= render 'shared/side_related_posts' unless @related_posts.empty?%>
 
   </div>
 
