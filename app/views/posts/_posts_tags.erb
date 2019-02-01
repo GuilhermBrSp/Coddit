@@ -1,4 +1,3 @@
-
-
-<a href="">
-  <span class="label label-info"><%=tag.name %></span></a>
+<%= link_to subscribe_path(:tag_id => tag.id) , remote: true, data: { target: '#modal-window', toggle: 'modal' } do %>
+  <span class="label label-info"><%=tag.name %></span>
+<% end %>
