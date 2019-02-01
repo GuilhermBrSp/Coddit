@@ -40,7 +40,7 @@
             </li>
 
             <li>
-            <a href=""><i class="fa fa-star"></i> Favorites</a>
+            <%= link_to '<i class="fa fa-star"></i> Favorites'.html_safe, posts_path(favorites:true), id:'favorites-list' %>
             </li>
           </ul>
 

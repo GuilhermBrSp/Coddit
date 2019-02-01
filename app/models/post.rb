@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :favorites
 
     def self.tagged_with(name)
       Tag.find_by!(name: name).posts

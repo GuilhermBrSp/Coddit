@@ -20,46 +20,60 @@
         <div class="media-body">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4><strong><%= link_to post.title ,post %></strong>
-                <div class="favorite">
-                  <i class="glyphicon glyphicon-star" data-toggle="tooltip" title="Add to favorites"></i>
-                </div> </h4>
-            </div>
-            <div class="panel-body" style="word-wrap: break-word;"><%= post.body.truncate(200) %></div>
-            <br>
-            <div class="panel-footer" style="word-wrap: break-word;">
-              <p>
-                <i class="fa fa-user"></i>
-                by
-                <a href="#">User Name</a>
-                |
-                <i class="fa fa-clock-o"></i>
-                <%= time_ago_in_words(post.created_at) %> ago
-                |
-                <i class="fa fa-comment"></i>
-              <%=post.comments_counter %> Comments
-                |
-                <i class="fa fa-tags"></i>
-                Tags :
-              <%= render partial: 'posts/posts_tags', collection: post.tags.limit(3), :as => :tag  %>
-                |
-                <i class ="fa fa-arrow-right"></i>
-                <%= link_to 'Show', post, class: "btn btn-primary btn-xs" %>
-              </p>
+              <h4>
+                <strong><%= link_to post.title ,post %></strong>
+                <div class="favorite favorite_partial_<%= post.id %>">
+
+                  <% if Favorite.where(token_id:@token_id,post_id:post.id).exists? %>
+
+                  <%= link_to remove_favorite_path(:id => post.id), :remote => true, method: :delete, :class=>'favorites-button', :id => "favorite_id_#{post.id}" do%>
+                  <i class="fa fa-star " data-toggle="tooltip" title="Remove Post From Favorites" data-placement="left" style="-webkit-text-fill-color: yellow;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;"></i>
+                <%  end %>
+                <% else %>
+                <%= link_to add_favorite_path(:id => post.id), :remote => true, method: :post, :class=>'favorites-button', :id => "favorite_id_#{post.id}" do%>
+                <i class="fa fa-star" data-toggle="tooltip" title="Add Post to Favorites" data-placement="left" style="-webkit-text-fill-color: white;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;"></i>
+              <%  end %>
+
+              <% end %>
 
             </div>
-
-          </div>
+          </h4>
         </div>
+        <div class="panel-body" style="word-wrap: break-word;"><%= post.body.truncate(200) %></div>
+        <br>
+        <div class="panel-footer" style="word-wrap: break-word;">
+          <p>
+            <i class="fa fa-user"></i>
+            by
+            <a href="#">User Name</a>
+            |
+            <i class="fa fa-clock-o"></i>
+            <%= time_ago_in_words(post.created_at) %>
+            ago |
+            <i class="fa fa-comment"></i>
+            <%=post.comments_counter %>
+            Comments |
+            <i class="fa fa-tags"></i>
+            Tags :
+            <%= render partial: 'posts/posts_tags', collection: post.tags.limit(3), :as => :tag %>
+            |
+            <i class="fa fa-arrow-right"></i>
+            <%= link_to 'Show', post, class: "btn btn-primary btn-xs" %>
+          </p>
+
+        </div>
+
       </div>
-
-    <% end %>
-
+    </div>
   </div>
+
+<% end %>
+
+</div>
 
   <div class="col-lg-4" style="padding-top: 74px;">
 
-    <%= render "shared/side_content" %>
+<%= render "shared/side_content" %>
 
-  </div>
+</div>
 </div>

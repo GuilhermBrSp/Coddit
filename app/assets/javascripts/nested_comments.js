@@ -29,9 +29,12 @@ $(document).on('turbolinks:load', function() {
   setTimeout(function(){
     $('#flash').hide('slow', function(){ $('#flash').remove(); });
   }, 5000);
+  jQuery('[data-toggle="tooltip"]').tooltip();
  })
 
  $('input.tokenize').tokenfield();
+
+
 
 
 
