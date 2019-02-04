@@ -4,6 +4,16 @@ class Post < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :favorites
+  after_create :notify_users
+
+
+    def notify_users
+        self.tags.joins(:subscriptions)
+        .select('subscriptions.email')
+        .distinct
+                .map {|subscription| UserMailer.with(post:self, user_email: subscription.email  ).notify.deliver_now! }
+
+    end
 
     def self.tagged_with(name)
       Tag.find_by!(name: name).posts
