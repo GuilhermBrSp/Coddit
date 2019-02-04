@@ -1,4 +1,14 @@
 Rails.application.configure do
+  Rails.application.routes.default_url_options[:host] = "https://coddit-guilherme-oliveira.herokuapp.com"
+config.action_mailer.smtp_settings = {
+address: "smtp.gmail.com",
+port: 587,
+domain: "gmail.com",
+user_name: "coddit.team@gmail.com",
+password: "codditteam123@@",
+authentication: "plain",
+enable_starttls_auto: true
+}
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
