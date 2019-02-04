@@ -12,21 +12,11 @@
     </div>
 
 
-      <div class="media-left">
-        <div class="vote-wrap">
-          <div class="vote up">
-            <i class="glyphicon glyphicon-menu-up"></i>
-          </div>
-          <div class="vote down">
-            <i class="glyphicon glyphicon-menu-down"></i>
-          </div>
-        </div>
-        <!-- vote-wrap -->
-      </div>
+
       <!-- media-left -->
 
       <div class="media-body comment-body">
-        <p> <%= comment.body %></p>
+        <p style=""> <%= comment.body %></p>
 
 
         <div class="comment-meta">
@@ -36,7 +26,7 @@
               <i class=" fa fa-reply"> Reply</i>
             </a>
           </span>
-          
+
           <span >
             <% if comment.commentable.is_a? Post %>
             <a class="comments-button" role="button" data-toggle="tolltip" title="Hide Comments">

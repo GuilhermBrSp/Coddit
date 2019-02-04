@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h2 class="modal-title" id="exampleModalLabel">Subscribe To This Subject</h2>
+  </div>
+</div>
+<div class="modal-body" style="text-align:center">
+  You must enter your e-mail if you want to be notified about updates on this subject.
+
+  <%= form_tag(create_subscription_path(tag_id:@tag_id), method: "post", remote: true, format: :js) do %>
+
+
+    <%= text_field_tag(:email,"",class:'form-control', placeholder: 'Leave your email here :)',style:'margin-top:5%; margin-bottom:5%',id:'user_email') %>
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+    	<%= button_tag :Confirm, class:'btn btn-success', id:'confirm_email_register'%>
+
+  <% end %>
+</div>

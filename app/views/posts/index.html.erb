@@ -6,22 +6,13 @@
 
     <% @posts.each do |post| %>
       <div class="media">
-        <div class="media-left">
-          <div class="vote-wrap" style="font-size:160%">
-            <div class="vote up">
-              <i class="glyphicon glyphicon-menu-up"></i>
-            </div>
-            <div class="vote down">
-              <i class="glyphicon glyphicon-menu-down"></i>
-            </div>
-          </div>
-        </div>
+
 
         <div class="media-body">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4>
-                <strong><%= link_to post.title ,post %></strong>
+                <strong><%= link_to post.title ,post, data: {toggle:'tolltip'}, title:'Click to see more' %></strong>
                 <div class="favorite favorite_partial_<%= post.id %>">
 
                   <% if Favorite.where(token_id:@token_id,post_id:post.id).exists? %>
@@ -43,10 +34,6 @@
         <br>
         <div class="panel-footer" style="word-wrap: break-word;">
           <p>
-            <i class="fa fa-user"></i>
-            by
-            <a href="#">User Name</a>
-            |
             <i class="fa fa-clock-o"></i>
             <%= time_ago_in_words(post.created_at) %>
             ago |
@@ -56,9 +43,7 @@
             <i class="fa fa-tags"></i>
             Tags :
             <%= render partial: 'posts/posts_tags', collection: post.tags.limit(3), :as => :tag %>
-            |
-            <i class="fa fa-arrow-right"></i>
-            <%= link_to 'Show', post, class: "btn btn-primary btn-xs" %>
+
           </p>
 
         </div>

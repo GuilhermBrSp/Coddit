@@ -1,51 +1,43 @@
-
-
 <div class="well">
-<%= form_with(model: post, local: true) do |form| %>
+  <%= form_with(model: post, local: true) do |form| %>
 
-<% if post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(post.errors.count, "error") %>
-      prohibited this post from being saved:</h2>
-    <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %>
+        prohibited this post from being saved:</h2>
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="from-group">
+    <div class="field" data-toggle="toltip" title="You can register your tags by pressing 'enter' or ','"  >
+      <%= form.label :tag_list %><br/>
+      <%= form.text_field :tag_list, id: :post_tags, class: "tokenize" %>
+    </div>
   </div>
-<% end %>
 
-
-  <%= form.label :tag_list  %><br />
-  <%= form.text_field :tag_list, id: :post_tags, class: "tokenize" %>
-
-
-
-
-<div class="form-group">
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title, class: "form-control" %>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title, id: :post_title, class: "form-control" %>
+    </div>
   </div>
-</div>
 
-
-
-
-<div class="form-group">
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, id: :post_body, class: "form-control", rows: 20%>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :body %>
+      <%= form.text_area :body, id: :post_body, class: "form-control", rows: 20%>
+    </div>
   </div>
-</div>
 
-
-
-
-<div class="form-group">
-  <div class="actions">
-    <%= form.submit class: "btn btn-primary" %>
+  <div class="form-group">
+    <div class="actions">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
   </div>
-</div>
 <% end %>
 </div>
