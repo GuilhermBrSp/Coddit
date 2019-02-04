@@ -8,9 +8,8 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.notify.subject
   #
   def notify
-    @greeting = "Hi"
 
-    mail to: params[:user], subject: "New Post in Coddit!"
+    mail to: params[:user_email], subject: "New Post in Coddit!"
   end
 
 

@@ -11,8 +11,7 @@ class Post < ApplicationRecord
         self.tags.joins(:subscriptions)
         .select('subscriptions.email')
         .distinct
-        .map {|subscription| UserMailer.with(post:self, user: subscription.email  ).notify.deliver_now! }
-
+                .map {|subscription| UserMailer.with(post:self, user_email: subscription.email  ).notify.deliver_now! }
 
     end
 
