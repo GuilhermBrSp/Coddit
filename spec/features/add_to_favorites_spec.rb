@@ -5,6 +5,12 @@ describe 'As a user', js: true do
     Post.create(title: title, body: body)
   end
 
+  def wait_for_ajax
+    Timeout.timeout(Capybara.default_wait_time) do
+      loop until page.evaluate_script('jQuery.active').zero?
+    end
+  end
+
   it 'I can add one or more posts to my favorites list' do
     token_id = 1
     post_a = create_post('Title A', 'this is body A')
@@ -34,15 +40,15 @@ describe 'As a user', js: true do
 
 
     click_link "favorite_id_#{post_a.id}"
-
+    wait_for_ajax
     click_link "favorite_id_#{post_b.id}"
-
+    wait_for_ajax
     click_link "favorite_id_#{post_c.id}"
-
-
+    wait_for_ajax
     click_link "favorite_id_#{post_a.id}"
-
+    wait_for_ajax
     click_link "favorite_id_#{post_c.id}"
+    wait_for_ajax
 
 
     expect(post_b.favorites.empty?).to eq false

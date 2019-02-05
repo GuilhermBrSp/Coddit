@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'As a user' do
+describe 'As a user', js:true do
   it 'I can create a post comment' do
     def create_post
       Post.create(title: 'Post Title', body: 'Post Body')
@@ -10,7 +10,7 @@ describe 'As a user' do
 
     visit post_path(post.id)
 
-    fill_in 'Leave a Comment', with: 'Just a comment'
+    fill_in 'post_comment_body', with: 'Just a comment'
 
     click_button 'Add Comment'
 
@@ -31,7 +31,7 @@ describe 'As a user' do
     click_button 'Add Comment'
 
     expect(page).not_to have_selector '.comment'
-
-    expect(page).to have_selector '.alert.alert-notice', text: "You can't leave the comment in blank"
+    
+    expect(post.comments.empty?).to eq true
   end
 end
