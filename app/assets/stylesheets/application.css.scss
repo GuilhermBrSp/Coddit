@@ -330,3 +330,11 @@ height: 100%;
     transform: translate3d(4px, 0, 0);
   }
 }
+
+.new-comment{
+      animation:blue-fade 3s;
+}
+
+ @keyframes blue-fade{
+5%{ background-color:rgb(136, 231, 255); }
+}
