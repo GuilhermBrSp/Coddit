@@ -1,0 +1,41 @@
+$(".post-comments").html("<%= j render partial: 'comments/comment', collection: post.comments.order('created_at DESC')  %>");
+
+function scrollToComment()
+{
+  $([document.documentElement, document.body]).animate({
+          scrollTop: $("#comment_id_<%= new_comment.id %>").offset().top - ($(window).height() - $("#comment_id_<%= new_comment.id %>").outerHeight(true)) / 2
+      }, 500);
+}
+function blueFadeOnComment() {
+  $("#comment_id_<%= new_comment.id %>").addClass("new-comment");
+}
+
+
+
+
+ function updateJqueryBindings() {
+   $(".reply-button").click(function() {
+    $(this).parent('span').siblings('.reply-collapse').toggle('collapse');
+  });
+
+
+
+   // Comments comment show comments toggle //
+  $(".comments-button").click(function() {
+    $(this).first().parent('span').parent('div').siblings('.panel-collapse').toggle('collapse');
+    if ($(this).attr('title') == 'Show Comments')
+    {
+      $(this).attr('title','Hide Comments')
+      console.log('hide comments')
+    }
+    else
+    {
+      $(this).attr('title','Show Comments')
+
+     }
+  });
+
+ }
+
+$.when(scrollToComment()).then(blueFadeOnComment());
+updateJqueryBindings();

@@ -1,6 +1,6 @@
 <% unless comment.created_at.nil? %>
 
-  <div class="media comment">
+  <div class="media comment"  id ="comment_id_<%=comment.id%>">
     <!-- first comment -->
     <div class="media-heading">
 
@@ -67,9 +67,9 @@
       <% if comment.commentable.is_a? Post %>
         <div class="panel-collapse collapse in" id="collapse">
       <% else %>
-        <div class="panel-collapse collapse" id="collapse">
+        <div class="panel-collapse collapse in" id="collapse">
       <% end %>
-        <%=  render partial: 'comments/comment', collection: comment.comments.limit(10) %>
+        <%=  render partial: 'comments/comment', collection: comment.comments %>
 
         </div>
     </div>

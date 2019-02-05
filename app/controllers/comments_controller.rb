@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :find_commentable
+  before_action :find_commentable, :get_parent
+
 
   def create
 
@@ -7,8 +8,9 @@ class CommentsController < ApplicationController
 
       if @comment.save
         increment_comments_counter
-        flash[:success] = "Comment Created With success"
-        redirect_back fallback_location: root_path
+        respond_to do |format|
+          format.js { render "create", :locals => { post: @parent, new_comment: @comment } }
+        end
       else
         flash[:danger] = "You can't leave the comment in blank"
         redirect_back fallback_location: root_path
@@ -29,10 +31,11 @@ class CommentsController < ApplicationController
     end
 
     def increment_comments_counter
-      parent = @commentable
-      while parent.is_a? Comment do
-        parent = parent.commentable
-      end
-      parent.increment! :comments_counter
+      @parent.increment! :comments_counter
+    end
+
+    def get_parent
+      @parent = @commentable
+      @parent = @parent.commentable while @parent.is_a? Comment
     end
 end
