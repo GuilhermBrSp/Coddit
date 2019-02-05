@@ -1,5 +1,5 @@
 $(".post-comments").html("<%= j render partial: 'comments/comment', collection: post.comments.order('created_at DESC')  %>");
-
+$('#post_comment_body').val('')
 function scrollToComment()
 {
   $([document.documentElement, document.body]).animate({
