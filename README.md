@@ -1,6 +1,6 @@
 # Coddit
 
-Coddit is a reddit-like blog that was developed during my developer training in my first internship at Codus.
+Coddit is a reddit-like project that was developed during my developer training in my first internship at Codus.
 
 ## Features implemented
 ### Home Page
